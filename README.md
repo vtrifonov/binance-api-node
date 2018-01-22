@@ -41,6 +41,8 @@ Following examples will use the `await` form, but that's totally up to you.
     - [book](#book)
     - [candles](#candles)
     - [aggTrades](#aggtrades)
+    - [trades](#trades)
+    - [tradesHistory](#tradeshistory)
     - [dailyStats](#dailystats)
     - [prices](#prices)
     - [allBookTickers](#allbooktickers)
@@ -263,6 +265,69 @@ Note: If `frondId`, `startTime`, and `endTime` are not sent, the most recent agg
 
 </details>
 
+#### trades
+
+Get recent trades of a symbol.
+
+```js
+console.log(await client.trades({ symbol: 'ETHBTC' }))
+```
+
+|Param|Type|Required|Default|Description|
+|--- |--- |--- |--- |--- |
+|symbol|String|true|
+|limit|Number|false|`500`|Max `500`|
+
+<details>
+<summary>Output</summary>
+
+```js
+[
+  {
+    "id": 28457,
+    "price": "4.00000100",
+    "qty": "12.00000000",
+    "time": 1499865549590,
+    "isBuyerMaker": true,
+    "isBestMatch": true
+  }
+]
+```
+
+</details>
+
+#### tradesHistory
+
+Lookup symbol trades history.
+
+```js
+console.log(await client.tradesHistory({ symbol: 'ETHBTC' }))
+```
+
+|Param|Type|Required|Default|Description|
+|--- |--- |--- |--- |--- |
+|symbol|String|true|
+|limit|Number|false|`500`|Max `500`|
+|fromId|Number|false|`null`|TradeId to fetch from. Default gets most recent trades.|
+
+<details>
+<summary>Output</summary>
+
+```js
+[
+  {
+    "id": 28457,
+    "price": "4.00000100",
+    "qty": "12.00000000",
+    "time": 1499865549590,
+    "isBuyerMaker": true,
+    "isBestMatch": true
+  }
+]
+```
+
+</details>
+
 #### dailyStats
 
 24 hour price change statistics.
@@ -270,6 +335,7 @@ Note: If `frondId`, `startTime`, and `endTime` are not sent, the most recent agg
 ```js
 console.log(await client.dailyStats({ symbol: 'ETHBTC' }))
 ```
+
 |Param|Type|Required|
 |--- |--- |--- |
 |symbol|String|true|

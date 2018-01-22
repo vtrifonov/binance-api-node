@@ -77,6 +77,16 @@ test.serial('[REST] aggTrades', async t => {
   t.truthy(trade.aggId)
 })
 
+test.serial('[REST] trades', async t => {
+  const trades = await client.trades({ symbol: 'ETHBTC' })
+  t.is(trades.length, 500)
+})
+
+test.serial('[REST] tradesHistory', async t => {
+  const trades = await client.tradesHistory({ symbol: 'ETHBTC' })
+  t.is(trades.length, 500)
+})
+
 test.serial('[REST] dailyStats', async t => {
   try {
     await client.dailyStats({})

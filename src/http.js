@@ -185,6 +185,11 @@ export default opts => {
     book,
     aggTrades,
     candles,
+    trades: payload =>
+      checkParams('trades', payload, ['symbol']) && publicCall('/v1/trades', payload),
+    tradesHistory: payload =>
+      checkParams('tradesHitory', payload, ['symbol']) &&
+      publicCall('/v1/historicalTrades', payload),
 
     dailyStats: payload =>
       checkParams('dailyStats', payload, ['symbol']) && publicCall('/v1/ticker/24hr', payload),

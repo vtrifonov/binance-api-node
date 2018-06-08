@@ -297,6 +297,9 @@ exports.default = function (opts) {
     withdraw: function withdraw(payload) {
       return pCall('/wapi/v3/withdraw.html', payload, 'POST');
     },
+    withdrawFee: function withdrawFee(payload) {
+      return pCall('/wapi/v3/withdrawFee.html', payload);
+    },
     withdrawHistory: function withdrawHistory(payload) {
       return pCall('/wapi/v3/withdrawHistory.html', payload);
     },
